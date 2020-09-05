@@ -18,26 +18,24 @@ public class main {
         for (int i = 0; i < greeting.length(); i++)
             System.out.print("=");
         System.out.println();
-
-
-        System.out.println("Input a number: ");
-        System.out.println("1 - First part ex. 19 to 21");
-        System.out.println("2 - logarithm of b with the base of a");
-        System.out.println("3 - Heron's formula to calculate area of triangle");
-        System.out.println("4 - quadratic equation");
-        System.out.println("0 - to exit program");
-
         KeyBoard keyBoard = new KeyBoard();
 
         while (true) {
+            System.out.println("Input a number: ");
+            System.out.println("1 - First part ex. 19 to 26");
+            System.out.println("2 - logarithm of b with the base of a");
+            System.out.println("3 - Heron's formula to calculate area of triangle");
+            System.out.println("4 - quadratic equation");
+            System.out.println("0 - to exit program");
 
-        int num = keyBoard.giveInt();
-        if(num == 0){
-            break;
-        }
+            int num = keyBoard.giveInt();
+            if (num == 0) {
+                break;
+            }
             switch (num) {
                 case 1:
-                    System.out.print("Case: 1");
+                    System.out.println("Case: 1");
+                    Equations19_26 equations19_26 = new Equations19_26(keyBoard);
                     break;
                 case 2:
                     System.out.println("Case: 2");
@@ -51,16 +49,16 @@ public class main {
 
 
                 default:
-                break;
+                    break;
             }
 
         }
-//            keyBoard.close();
+        keyBoard.close();
 //            scanner.close();
 //        public static void firstPart (Scanner scanner){
 //            System.out.println("Please, enter any number as X for calculating functions");
 //            int x = scanner.nextInt();
 //            System.out.println("x = " + x);
-        }
+    }
 
-   }
+}

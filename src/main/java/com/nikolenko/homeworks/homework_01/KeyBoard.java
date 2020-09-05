@@ -11,14 +11,16 @@ public class KeyBoard {
 
     int giveInt() {
         int num;
-        // while(true) {
-        try {
-            num = scanner.nextInt();
-            //  break;
-        } catch (Exception e) {
-            System.out.println("Only integer number, please");
-            num = 0;
-        }
+         while(true) {
+             try {
+                 num = scanner.nextInt();
+                   break;
+             } catch (Exception e) {
+                 System.out.println("Only integer number, please");
+                 scanner.next();
+                 //num = 0;
+             }
+         }
 
         return num;
 }
@@ -31,13 +33,14 @@ public class KeyBoard {
                 break;
             } catch (Exception e) {
                 System.out.println("Only  fractional number, please");
+                scanner.next();
             }
         }
         return num;
     }
 
-//    void close(){
-//        scanner.close();
-//    }
+    void close(){
+        scanner.close();
+    }
 
 }
