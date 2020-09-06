@@ -39,6 +39,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Case: 2");
+                    LogBBaseA lba = new LogBBaseA(keyBoard);
                     break;
                 case 3:
                     System.out.println("Case: 3");
