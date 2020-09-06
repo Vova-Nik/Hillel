@@ -9,10 +9,10 @@ import java.util.Scanner;
 //import Chapter111.Dispatch;
 //import Chapter12.StudyAnnotations;
 
-public class main {
+public class Main {
 //    static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         String greeting = "Welcome Hillel, Java course, Homework_01 Nikolenko!";
         System.out.println(greeting);
         for (int i = 0; i < greeting.length(); i++)
@@ -23,10 +23,10 @@ public class main {
         while (true) {
             System.out.println("Input a number: ");
             System.out.println("1 - First part ex. 19 to 26");
-            System.out.println("2 - logarithm of b with the base of a");
+            System.out.println("2 - Logarithm of b with the base of a");
             System.out.println("3 - Heron's formula to calculate area of triangle");
-            System.out.println("4 - quadratic equation");
-            System.out.println("0 - to exit program");
+            System.out.println("4 - Quadratic equation");
+            System.out.println("0 - To exit program");
 
             int num = keyBoard.giveInt();
             if (num == 0) {

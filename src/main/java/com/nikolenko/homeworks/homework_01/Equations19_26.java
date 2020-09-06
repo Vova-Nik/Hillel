@@ -2,7 +2,7 @@ package com.nikolenko.homeworks.homework_01;
 
 public class Equations19_26 {
     private KeyBoard keyBoard;
-    private double x = 1;
+    private double x;
     private double y = 1;
 
     Equations19_26(KeyBoard kbd) {
@@ -17,7 +17,8 @@ public class Equations19_26 {
             equation23();
             equation24();
             equation25();
-            equation27();
+            equation26();
+            //equation27();
         }catch(Exception e){
             System.out.println("Math exception. Probably Division by Zerro");
         }
@@ -72,23 +73,29 @@ public class Equations19_26 {
     }
 
     private void equation25() {
-        double yUp = Math.abs(Math.pow(x,3.4) + 2.5 * Math.pow(x,1.2) - 0.7);
-        double yDn = Math.pow(Math.pow(Math.E,(2.5 * x)), 1d/4);
-        double yUnderSqrt = Math.log10(Math.acos(yUp/yDn));
+        double numerator = Math.abs(Math.pow(x,3.4) + 2.5 * Math.pow(x,1.2) - 0.7);
+        double denominator = Math.pow(Math.pow(Math.E,(2.5 * x)), 1d/4);
+        double underSqrt = Math.log10(Math.acos(numerator/denominator));
+        y = Math.pow(underSqrt,1d/4) + 1;
 
-
-        y = Math.pow(yUnderSqrt,1d/4) + 1;
         System.out.println("Task #25:");
-        System.out.println(" yUp = " + yUp + ", yDn = " + yDn +  "yUnderSqrt = " + yUnderSqrt );
-        System.out.println(" y = " + y + "\n");
+        System.out.println("numerator = Math.abs(Math.pow(x,3.4) + 2.5 * Math.pow(x,1.2) - 0.7) = " + denominator);
+        System.out.println("denominator = Math.pow(Math.pow(Math.E,(2.5 * x)), 1d/4) = " + numerator);
+        System.out.println("underSqrt = Math.log10(Math.acos(numerator/denominator)) = " + underSqrt);
+        System.out.println("y = Math.pow(underSqrt,1d/4) + 1 = " + y + "\n");
     }
 
-    private void equation27(){
-        y = 1/x;
-        System.out.println("1/ " + x + " = " + y );
-        y = Math.pow(x,1d/2);
-        System.out.println("Math.pow(" + x + ", 1d/2) = " + y  + "\n");
+    private void equation26() {
+        y = Math.log(Math.abs(Math.sin(x))) + 2*Math.E + + 2 * Math.cos(Math.abs(x)) + 2;
+        System.out.println("Task #26:");
+        System.out.println("Math.log(Math.abs(Math.sin(x))) + 2*Math.E + + 2 * Math.cos(Math.abs(x)) + 2 = " + y + "\n");
     }
-
+        //testing purposes
+        //    private void equation27(){
+        //        y = 1/x;
+        //        System.out.println("1/ " + x + " = " + y );
+        //        y = Math.pow(x,1d/2);
+        //        System.out.println("Math.pow(" + x + ", 1d/2) = " + y  + "\n");
+        //    }
 
 }
