@@ -43,6 +43,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Case: 3");
+                    HeronsEquition heq = new HeronsEquition(keyBoard);
                     break;
                 case 4:
                     System.out.println("Case: 4");

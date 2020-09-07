@@ -45,29 +45,46 @@ public class KeyBoard {
 
     public double[] givePair(String request, String err, String success) {
         double[] pair = new double[2];
-        System.out.println(request);
         scanner.nextLine();
-        String iput = scanner.nextLine();
-        String[] splited = iput.split("\\s+");
-        pair[0] = Double.parseDouble( splited[0] );
-        pair[1] = Double.parseDouble( splited[1] );
+        while(true) {
+        System.out.println(request);
 
-        System.out.println("input = " + iput);
+        String input = scanner.nextLine();
+        String[] splited = input.split("\\s+");
 
-//        System.out.println("A = " + pair[0]);
-//        System.out.println("B = " + pair[1]);
-//        System.out.println(err);
+            try {
+                pair[0] = Double.parseDouble(splited[0]);
+                pair[1] = Double.parseDouble(splited[1]);
+                break;
+            } catch (Exception e) {
+                System.out.println(err);
+            }
+        }
         System.out.println(success);
 
         return pair;
     }
 
-    public double[] giveTriangle(String request, String err) {
-        System.out.println("request");
-        triangle[0] = 1;
-        triangle[1] = 2;
-        triangle[3] = 3;
-        System.out.println("err");
+    public double[] giveTriangle(String request, String err, String success) {
+        double[] triangle = new double[3];
+        scanner.nextLine();
+        while(true) {
+            System.out.println(request);
+
+            String input = scanner.nextLine();
+            String[] splited = input.split("\\s+");
+
+            try {
+                triangle[0] = Double.parseDouble(splited[0]);
+                triangle[1] = Double.parseDouble(splited[1]);
+                triangle[2] = Double.parseDouble(splited[2]);
+                break;
+            } catch (Exception e) {
+                System.out.println(err);
+            }
+        }
+        System.out.println(success);
+
         return triangle;
     }
 
