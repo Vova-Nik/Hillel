@@ -5,12 +5,9 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-//import Chapt9.Chapter9;
-//import Chapter111.Dispatch;
-//import Chapter12.StudyAnnotations;
+
 
 public class Main {
-//    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
         String greeting = "Welcome Hillel, Java course, Homework_01 Nikolenko!";
@@ -47,6 +44,8 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Case: 4");
+                    QuadraticEquation quadraticEquation= new QuadraticEquation(keyBoard);
+                    quadraticEquation.proceed();
                     break;
 
 
