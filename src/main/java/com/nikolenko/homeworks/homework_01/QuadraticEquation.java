@@ -31,8 +31,9 @@ public class QuadraticEquation {
         }
         if (d > 0) {
             System.out.println("Discriminant = " + d + ". There are two solutions to the equation");
-            double x1 = (-b + Math.pow(d, 1.0 / 2)) / 2 * a;
-            double x2 = (-b - Math.pow(d, 1.0 / 2)) / 2 * a;
+            
+            double x1 = (-b + Math.pow(d, 1.0 / 2)) / (2 * a);
+            double x2 = (-b - Math.pow(d, 1.0 / 2)) / (2 * a);
             double[] solutions = {0, 0};
 
             solutions[0] = x1;
