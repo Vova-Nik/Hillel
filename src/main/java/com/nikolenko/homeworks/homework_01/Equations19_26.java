@@ -19,7 +19,7 @@ public class Equations19_26 {
             equation25();
             equation26();
             //equation27();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Math exception. Probably Division by Zerro");
         }
     }
@@ -61,22 +61,22 @@ public class Equations19_26 {
     }
 
     private void equation23() {
-        y = Math.acos(Math.tan(5*x/Math.PI)) + Math.pow(x,5.7)/23;
+        y = Math.acos(Math.tan(5 * x / Math.PI)) + Math.pow(x, 5.7) / 23;
         System.out.println("Task #23:");
         System.out.println("Math.acos(Math.tan(5*x/Math.PI)) + Math.pow(x,5.7)/23 = " + y + "\n");
     }
 
     private void equation24() {
-        y = Math.atan(Math.abs(8.3 - 21*x*x - .8*x) / Math.pow((2.5 + 1/x*x),(1d/3)));
+        y = Math.atan(Math.abs(8.3 - 21 * x * x - .8 * x) / Math.pow((2.5 + 1 / x * x), (1d / 3)));
         System.out.println("Task #24:");
         System.out.println(" Math.atan(Math.abs(8.3 - 21*x*x - .8*x) / Math.pow((2.5 + 1/x*x),(1d/3))) = " + y + "\n");
     }
 
     private void equation25() {
-        double numerator = Math.abs(Math.pow(x,3.4) + 2.5 * Math.pow(x,1.2) - 0.7);
-        double denominator = Math.pow(Math.pow(Math.E,(2.5 * x)), 1d/4);
-        double underSqrt = Math.log10(Math.acos(numerator/denominator));
-        y = Math.pow(underSqrt,1d/4) + 1;
+        double numerator = Math.abs(Math.pow(x, 3.4) + 2.5 * Math.pow(x, 1.2) - 0.7);
+        double denominator = Math.pow(Math.pow(Math.E, (2.5 * x)), 1d / 4);
+        double underSqrt = Math.log10(Math.acos(numerator / denominator));
+        y = Math.pow(underSqrt, 1d / 4) + 1;
 
         System.out.println("Task #25:");
         System.out.println("numerator = Math.abs(Math.pow(x,3.4) + 2.5 * Math.pow(x,1.2) - 0.7) = " + denominator);
@@ -86,16 +86,16 @@ public class Equations19_26 {
     }
 
     private void equation26() {
-        y = Math.log(Math.abs(Math.sin(x))) + 2*Math.E + + 2 * Math.cos(Math.abs(x)) + 2;
+        y = Math.log(Math.abs(Math.sin(x))) + 2 * Math.E + +2 * Math.cos(Math.abs(x)) + 2;
         System.out.println("Task #26:");
         System.out.println("Math.log(Math.abs(Math.sin(x))) + 2*Math.E + + 2 * Math.cos(Math.abs(x)) + 2 = " + y + "\n");
     }
-        //testing purposes
-        //    private void equation27(){
-        //        y = 1/x;
-        //        System.out.println("1/ " + x + " = " + y );
-        //        y = Math.pow(x,1d/2);
-        //        System.out.println("Math.pow(" + x + ", 1d/2) = " + y  + "\n");
-        //    }
+    //testing purposes
+    //    private void equation27(){
+    //        y = 1/x;
+    //        System.out.println("1/ " + x + " = " + y );
+    //        y = Math.pow(x,1d/2);
+    //        System.out.println("Math.pow(" + x + ", 1d/2) = " + y  + "\n");
+    //    }
 
 }

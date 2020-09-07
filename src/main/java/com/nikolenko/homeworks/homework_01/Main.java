@@ -18,6 +18,8 @@ public class Main {
         KeyBoard keyBoard = new KeyBoard();
 
         while (true) {
+            System.out.println("\n---------------------------------------------------------------------------------------------");
+
             System.out.println("Input a number: ");
             System.out.println("1 - First part ex. 19 to 26");
             System.out.println("2 - Logarithm of b with the base of a");
