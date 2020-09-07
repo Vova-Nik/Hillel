@@ -27,7 +27,7 @@ public class Main {
             System.out.println("4 - Quadratic equation");
             System.out.println("0 - To exit program");
 
-            int num = keyBoard.giveInt();
+            int num = keyBoard.giveMenu(4);
             if (num == 0) {
                 break;
             }

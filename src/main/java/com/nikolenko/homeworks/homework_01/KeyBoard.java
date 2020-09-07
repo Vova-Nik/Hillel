@@ -29,6 +29,44 @@ public class KeyBoard {
         return num;
     }
 
+    public int giveMenu(){
+        int num;
+        while (true) {
+            try {
+                num = scanner.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Only integer number, please");
+                scanner.next();
+                //num = 0;
+            }
+        }
+        if(num>1000||num<=0){
+            num =0;
+        }
+        scanner.nextLine();
+        return num;
+    }
+
+    public int giveMenu(int max){
+        int num;
+        while (true) {
+            try {
+                num = scanner.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Only integer number, please");
+                scanner.next();
+                //num = 0;
+            }
+        }
+        if(num>max||num<=0){
+            num =0;
+        }
+        scanner.nextLine();
+        return num;
+    }
+
     double giveDouble() {
         double num;
         while (true) {
@@ -45,7 +83,7 @@ public class KeyBoard {
 
     public double[] givePair(String request, String err, String success) {
         double[] pair = new double[2];
-        scanner.nextLine();
+//        scanner.nextLine();
         while(true) {
         System.out.println(request);
 
@@ -67,7 +105,7 @@ public class KeyBoard {
 
     public double[] giveTriangle(String request, String err, String success) {
         double[] triangle = new double[3];
-        scanner.nextLine();
+//        scanner.nextLine();
         while(true) {
             System.out.println(request);
 
@@ -86,6 +124,12 @@ public class KeyBoard {
         System.out.println(success);
 
         return triangle;
+    }
+
+    public String giveString(){
+        scanner.nextLine();
+
+        return "fff";
     }
 
     void close() {
