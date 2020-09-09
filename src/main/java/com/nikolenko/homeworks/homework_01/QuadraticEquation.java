@@ -25,7 +25,7 @@ public class QuadraticEquation {
         }
         if (d == 0) {
             System.out.println("Discriminant = " + d + ". There is only one solution to the equation");
-            double x = -b / 2 * a;
+            double x = -b / (2 * a);
             System.out.println("x = " + x);
             return;
         }
