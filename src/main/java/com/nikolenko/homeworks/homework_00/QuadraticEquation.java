@@ -1,4 +1,4 @@
-package com.nikolenko.homeworks.homework_01;
+package com.nikolenko.homeworks.homework_00;
 
 public class QuadraticEquation {
     KeyBoard keyBoard;

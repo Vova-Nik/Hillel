@@ -1,10 +1,4 @@
-package com.nikolenko.homeworks.homework_01;
-
-import java.io.IOException;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
-import java.util.Scanner;
-
+package com.nikolenko.homeworks.homework_00;
 
 
 public class Main {

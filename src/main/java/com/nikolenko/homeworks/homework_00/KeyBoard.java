@@ -1,6 +1,5 @@
-package com.nikolenko.homeworks.homework_01;
+package com.nikolenko.homeworks.homework_00;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KeyBoard {
@@ -67,7 +66,7 @@ public class KeyBoard {
         return num;
     }
 
-    double giveDouble() {
+    public double giveDouble() {
         double num;
         while (true) {
             try {
@@ -132,7 +131,7 @@ public class KeyBoard {
         return "fff";
     }
 
-    void close() {
+    public void close() {
         scanner.close();
     }
 
