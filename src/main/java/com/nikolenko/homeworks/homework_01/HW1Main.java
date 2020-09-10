@@ -47,7 +47,7 @@ public class HW1Main {
     }
 
     public static String bmi() {
-        System.out.println("Practice 2. '(bmi = weight / height ^ 2').");
+        System.out.println("Practice 2. '(bmi = weight // height ^ 2').");
         System.out.println("Please, enter Your weight in kilograms. (any number XX,XXX)");
         double weight = keyBoard.giveDouble();
         System.out.println("Please, enter Your height in meters. (any number XX,XXX m)");
