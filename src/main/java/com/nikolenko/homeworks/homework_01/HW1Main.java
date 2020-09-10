@@ -13,8 +13,15 @@ public class HW1Main {
         System.out.println();
         keyBoard = new KeyBoard();
 
-        nathan();
-        System.out.println(bmi());
+//        nathan();
+//        System.out.println("===============================================");
+//        System.out.println(bmi());
+//        System.out.println("===============================================");
+        System.out.println("Practice 3. 'Given a year, return the century it is in'");
+        System.out.println("Please, enter year (any number XXXX)");
+        int year = keyBoard.giveInt();
+        System.out.println(centuryFromYear(year));
+        System.out.println("===============================================");
 
 
         keyBoard.close();
@@ -30,7 +37,7 @@ public class HW1Main {
         if (liters > 3) {
             System.out.println(" Natans life is in danger");
         }
-        System.out.println("\n ===============================================");
+        System.out.println("\n");
     }
 
     public static String bmi() {
@@ -49,11 +56,36 @@ public class HW1Main {
             if bmi > 30 return "Obese"
         */
 
-        if (bmi <= 18.5){return "Underweight";}
-        if (bmi > 18.5 && bmi <= 25.0) { return "Normal";}
-        if (bmi > 25.0 && bmi <= 30.0) {return "Overweight";}
-        if (bmi > 30) {return "Obese";}
+        if (bmi <= 18.5) {
+            return "Underweight";
+        }
+        if (bmi > 18.5 && bmi <= 25.0) {
+            return "Normal";
+        }
+        if (bmi > 25.0 && bmi <= 30.0) {
+            return "Overweight";
+        }
+        if (bmi > 30) {
+            return "Obese";
+        }
 
         return "Unknown error";
+    }
+
+    /*
+        centuryFromYear(1705)  returns (18)
+        centuryFromYear(1900)  returns (19)
+        centuryFromYear(1601)  returns (17)
+        centuryFromYear(2000)  returns (20)
+    */
+    private static int centuryFromYear(int year) {
+
+        if (year <= 0) {
+            System.out.println("Doesn't work to BC centuries");
+            return 0;
+        }
+        //int yearNormalized = year -1;
+        return ((year-1)/100 + 1);
+
     }
 }

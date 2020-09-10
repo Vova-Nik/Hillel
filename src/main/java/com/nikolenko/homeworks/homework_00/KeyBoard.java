@@ -12,7 +12,7 @@ public class KeyBoard {
         scanner = new Scanner(System.in);
     }
 
-    int giveInt() {
+    public int giveInt() {
         int num;
         while (true) {
             try {
