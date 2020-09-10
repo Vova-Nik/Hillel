@@ -23,7 +23,6 @@ public class HW1Main {
         System.out.println(centuryFromYear(year));
         System.out.println("===============================================");
 
-
         keyBoard.close();
     }
 
@@ -68,7 +67,6 @@ public class HW1Main {
         if (bmi > 30) {
             return "Obese";
         }
-
         return "Unknown error";
     }
 
@@ -79,13 +77,19 @@ public class HW1Main {
         centuryFromYear(2000)  returns (20)
     */
     private static int centuryFromYear(int year) {
-
         if (year <= 0) {
             System.out.println("Doesn't work to BC centuries");
             return 0;
         }
-        //int yearNormalized = year -1;
-        return ((year-1)/100 + 1);
+        return ((year - 1) / 100 + 1);
+    }
 
+
+    public String describeAge(int age) {
+        String msg =  "kid";
+        if(age>12) msg = "teenager";
+        if(age>17) msg = "adult";
+        if(age>=65) msg = "elderly";
+        return "You're a(n) " + msg;
     }
 }
