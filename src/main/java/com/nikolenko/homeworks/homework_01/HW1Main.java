@@ -13,16 +13,23 @@ public class HW1Main {
         System.out.println();
         keyBoard = new KeyBoard();
 
-//        nathan();
-//        System.out.println("===============================================");
-//        System.out.println(bmi());
-//        System.out.println("===============================================");
+        nathan();
+        System.out.println("===============================================");
+
+        System.out.println(bmi());
+        System.out.println("===============================================");
+
         System.out.println("Practice 3. 'Given a year, return the century it is in'");
         System.out.println("Please, enter year (any number XXXX)");
         int year = keyBoard.giveInt();
         System.out.println(centuryFromYear(year));
         System.out.println("===============================================");
 
+        System.out.println("Practice 4. 'Describe Age'");
+        System.out.println("Please, enter age in years");
+        int age = keyBoard.giveInt();
+        System.out.println(describeAge(age));
+        System.out.println("===============================================");
         keyBoard.close();
     }
 
@@ -85,11 +92,19 @@ public class HW1Main {
     }
 
 
-    public String describeAge(int age) {
-        String msg =  "kid";
-        if(age>12) msg = "teenager";
-        if(age>17) msg = "adult";
-        if(age>=65) msg = "elderly";
+//    public static String describeAge(int age) {
+//        String msg =  "kid";
+//        if(age > 12) msg = "teenager";
+//        if(age > 17) msg = "adult";
+//        if(age >= 64) msg = "elderly";
+//        return "You're a(n) " + msg;
+//    }
+
+    public static String describeAge(int age) {
+        String msg = age <= 12 ? "kid"
+                : age <= 17 ? "teenager"
+                : age <= 64 ? "adult" :
+                "elderly";
         return "You're a(n) " + msg;
     }
 }
