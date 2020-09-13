@@ -33,16 +33,18 @@ public class PrimitivInfo {
     }
 
     public String info(long toInfo) {
-
-        return "Type - 'long'\n Max value is " + Long.MAX_VALUE + "\n" + " Min value is " + Long.MIN_VALUE + "\n";
+        String result = "Type - 'long'\n Max value is " + Long.MAX_VALUE + "\n" + " Min value is " + Long.MIN_VALUE + "\n";
+        return butify(result);
     }
 
     public String info(float toInfo) {
-        return "Type - 'float'\n Max value is " + Float.MAX_VALUE + "\n" + " Min value is " + Float.MIN_VALUE + "\n";
+        String result = "Type - 'float'\n Max value is " + Float.MAX_VALUE + "\n" + " Min value is " + Float.MIN_VALUE + "\n";
+        return butify(result);
     }
 
     public String info(double toInfo) {
-        return "Type - 'double'\n Max value is " + Double.MAX_VALUE + "\n" + " Min value is " + Double.MIN_VALUE + "\n";
+        String result = "Type - 'double'\n Max value is " + Double.MAX_VALUE + "\n" + " Min value is " + Double.MIN_VALUE + "\n";
+        return butify(result);
     }
 
     public String info(char toInfo) {
@@ -54,5 +56,9 @@ public class PrimitivInfo {
             }
         }
         return "Type - 'character'\n" + chars + "\n";
+    }
+
+    private String butify(String inp) {
+        return inp.replaceAll("E", "*10^");
     }
 }
