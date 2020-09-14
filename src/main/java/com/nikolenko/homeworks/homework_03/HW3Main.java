@@ -59,7 +59,7 @@ public class HW3Main {
         /* *********************** Page 29 ******************************/
         long lVal = 1000;
 
-            // int iVal = lVal; // error at coplilation phase
+        // int iVal = lVal; // error at coplilation phase
 
 
         /* *********************** Page 30 ******************************/
@@ -154,6 +154,80 @@ public class HW3Main {
                 break;
         }
         System.out.println("Performed");
+
+        /* *********************** Page 47 ******************************/
+        System.out.println("*********************** Page 47 ******************************");
+
+        for (i = 0; i < 4; i++) {
+            System.out.println("Hello, World!");
+        }
+        int j = 0;
+        for (i = 0, j = 10; i <= 10; i++, j--) {
+            System.out.println(i + " " + j);
+        }
+
+        /* *********************** Page 49 ******************************/
+        System.out.println("*********************** Page 49 ******************************");
+        i = 0;
+        while (i < 4) {
+            System.out.println("Hello, World2!");
+            i++;
+        }
+
+        /* *********************** Page 51 ******************************/
+        System.out.println("*********************** Page 51 ******************************");
+        i = 0;
+        do {
+            System.out.println("Hello World3");
+            i++;
+        } while (i < 4);
+
+        /* *********************** Page 53 ******************************/
+        System.out.println("*********************** Page 53 ******************************");
+
+        i = 0;
+        while (true) {
+            System.out.println("Hello, World!");
+            i++;
+            if (i > 5)
+                break;
+        }
+        System.out.println("Page 53 first cycle performed");
+
+        label:
+        {
+            System.out.println(1);
+
+
+            if (true) {
+                break label;
+            }
+            System.out.println(2);
+        }
+
+        System.out.println("Page 53 second cycle performed. Newer shall do such thing!!! "); //Newer shall do such thing!!!
+
+        /* *********************** Page 54 ******************************/
+        System.out.println("*********************** Page 54 ******************************");
+
+            int s = 0;
+            for (i = 1; i <= 20; i++) {
+                if (i == 13)
+                    continue;
+                s = s + i;
+            }
+        System.out.println("Page 54 performed. Newer shall do such thing!!! ");
+
+        /* *********************** Page 61 ******************************/
+        System.out.println("*********************** Page 61 ******************************");
+
+        int[] elements = { 1, 2, 3, 4, 5 }; // массив из 5 элементов
+        int[] tmp = new int[10];
+        System.arraycopy(elements, 0, tmp, 0, elements.length);
+        elements = tmp;
+        for (int e : elements) {
+            System.out.println(e);
+        }
     }
 
     /*Method just  to escape vars a,b,c, renaming*/
@@ -193,7 +267,7 @@ public class HW3Main {
         int a = 1; // Переопределяем. Так делать допускается.
         {
             a = 2; // Ok
-           // int a = 3;         // Error: already defined
+            // int a = 3;         // Error: already defined
             int b = 4; // Ok
         }
         //b=5;                  // Error: cannot find
