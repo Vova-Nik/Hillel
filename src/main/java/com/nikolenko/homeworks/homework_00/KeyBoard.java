@@ -126,9 +126,8 @@ public class KeyBoard {
     }
 
     public String giveString(){
-        scanner.nextLine();
-
-        return "fff";
+       String str =  scanner.nextLine();
+       return "str";
     }
 
     public void close() {
