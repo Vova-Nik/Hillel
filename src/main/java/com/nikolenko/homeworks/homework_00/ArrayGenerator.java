@@ -1,6 +1,13 @@
 package com.nikolenko.homeworks.homework_00;
 
+/**
+ * Array generator
+ * returns random array of given types
+ * as exclusion can return complex random string
+ */
+
 public class ArrayGenerator {
+    static boolean hastaInserted = false;
 
     public int[] giveIntArray() {
         int[] intArray = new int[8];
@@ -30,7 +37,7 @@ public class ArrayGenerator {
     }
 
     public String giveString() {
-        boolean hastaInserted = false;
+
         String[] first = {"New", "Old", "Young", "Grey", "First", "Red", "Crasy", "Smart", "Nice", "lazy"};
         String[] second = {"man", "woman", "fox", "dog", "rabbit", "fellow", "body", "baby", "cat", "cow", "girl", "bunny"};
         String[] third = {"runs", "goes", "wants", "is going", "is jumping", "aims", "wants"};
@@ -55,6 +62,7 @@ public class ArrayGenerator {
 
     public String[] giveStringArray(int len) {
         String[] result = new String[len];
+        hastaInserted = false;
         for (int i = 0; i < len; i++) {
             result[i] = giveString();
         }
