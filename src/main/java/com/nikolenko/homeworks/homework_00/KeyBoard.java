@@ -84,10 +84,10 @@ public class KeyBoard {
         double[] pair = new double[2];
 //        scanner.nextLine();
         while(true) {
-        System.out.println(request);
+            System.out.println(request);
 
-        String input = scanner.nextLine();
-        String[] splited = input.split("\\s+");
+            String input = scanner.nextLine();
+            String[] splited = input.split("\\s+");
 
             try {
                 pair[0] = Double.parseDouble(splited[0]);
@@ -126,7 +126,7 @@ public class KeyBoard {
     }
 
     public String giveString(){
-       return scanner.nextLine();
+        return scanner.nextLine();
     }
 
     public void close() {
