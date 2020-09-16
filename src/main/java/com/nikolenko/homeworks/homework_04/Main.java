@@ -1,6 +1,5 @@
 package com.nikolenko.homeworks.homework_04;
 
-import com.nikolenko.homeworks.homework_00.InputGenerator;
 import com.nikolenko.homeworks.homework_00.KeyBoard;
 
 import static java.lang.System.arraycopy;
@@ -26,23 +25,32 @@ public class Main {
         /* ************************************************* palindrome *************************************************************/
         System.out.println("Task2");
         System.out.println("\nWrite a program which checks if a string (array of chars) is a palindrome");
-        //        Аргентина манит негра А собака боса
-        //        String poly = "А %%%стерва67* врет1 #$";
-        //        String poly = "AbcbA";
-        //        String poly = "Аргентина манит негра";
-        //        String poly = "Аргентина анит негра";
-        //        String poly = "А собака боса";
+
 
         KeyBoard keyBoard = new KeyBoard();
-        System.out.println("Input any string to check, if it is a palindrome");
-        String poly = keyBoard.giveString();
+        //System.out.println("Input any string to check, if it is a palindrome");
+        //String poly = keyBoard.giveString();
 
-
+        String poly = "tenet";
         if (l03Task2(poly)) {
             System.out.println("Phrase: " + '\"' + poly + '\"' + " is true palindrome");
         } else {
             System.out.println("Phrase: " + '\"' + poly + '\"' + " is not a palindrome");
         }
+         poly = "Аргентина, манит негра!!!";
+        if (l03Task2(poly)) {
+            System.out.println("Phrase: " + '\"' + poly + '\"' + " is true palindrome");
+        } else {
+            System.out.println("Phrase: " + '\"' + poly + '\"' + " is not a palindrome");
+        }
+        poly = "А стерва!";
+        if (l03Task2(poly)) {
+            System.out.println("Phrase: " + '\"' + poly + '\"' + " is true palindrome");
+        } else {
+            System.out.println("Phrase: " + '\"' + poly + '\"' + " is not a palindrome");
+        }
+
+
         System.out.println("\n*********************************************************************************");
 
         /* ************************************************* sum of arrays *************************************************************/
@@ -52,7 +60,7 @@ public class Main {
                 "| col_2 | sum). Otherwise print which column has bigger size");
         InputGenerator inputGenerator = new InputGenerator();
         System.out.println(l03Task3(inputGenerator.giveIntArray(10), inputGenerator.giveIntArray(10)));
-        System.out.println(l03Task3(inputGenerator.giveIntArray(10), inputGenerator.giveIntArray(12)));
+        //System.out.println(l03Task3(inputGenerator.giveIntArray(10), inputGenerator.giveIntArray(12)));
 
         System.out.println("\n*********************************************************************************");
 
@@ -64,8 +72,10 @@ public class Main {
 
         /* ******************************if given number is STRONG **************************************************/
 
-
-
+        System.out.println(l03Task4(2376));
+        System.out.println(l03Task4(145));
+        System.out.println(l03Task4(2047));
+        System.out.println(l03Task4(22046));
 
 
         keyBoard.close();
@@ -135,4 +145,68 @@ public class Main {
 
         return result.toString();
     }
+
+
+    private static String l03Task4(int numToCheck) {
+        int toCheck = numToCheck;
+        StringBuilder result = new StringBuilder();
+
+        if (toCheck >= Math.pow(10, 8)) {
+            result.append("Number is too big. Try another.");
+            return result.toString();
+        }
+        if (toCheck < 10) {
+            result.append("Number is too little. It is definitely not a STRONG.");
+            return result.toString();
+        }
+        result.append("Checking number ").append(numToCheck).append("\n");
+
+        /* parsing e.g 145 -> 1, 4, 5 in int[] array */
+        int[] parsed = new int[8];
+        for (int i = 0, j = 10000000; i < 7; i++, j = j / 10) {
+            parsed[i] = toCheck / j;
+            toCheck = toCheck - parsed[i] * j;
+        }
+        parsed[7] = toCheck % 10;
+
+        /* finding real size of number size 145 is 3, size 4567 is 4  size 00056 is 2*/
+        int size = 8;
+        for (int i = 0; i < 8; i++) {
+            if (parsed[i] == 0) {
+                size--;
+                continue;
+            }
+            break;
+        }
+//        System.out.println("size " + size);
+
+        int calc = 0;
+        int cc ;
+        for (int i = 8 - size; i < 8; i++) {
+            cc = factorial(parsed[i]);
+            calc += cc;
+            result.append(cc).append("\n");
+        }
+
+        result.append("----------\n").append(calc).append("\n");
+
+        if(numToCheck == calc) {
+            result.append("Number ").append(numToCheck).append(" is STRONG");
+        }
+        else{
+            result.append("Number ").append(numToCheck).append(" is not strong");
+        }
+        result.append("\n\n");
+        return result.toString();
+    }
+
+    public static int factorial(int number) {
+        int result = 1;
+        for (int factor = 2; factor <= number; factor++) {
+            result *= factor;
+        }
+        return result;
+    }
+
+
 }

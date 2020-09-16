@@ -1,4 +1,4 @@
-package com.nikolenko.homeworks.homework_00;
+package com.nikolenko.homeworks.homework_04;
 
 /**
  * Array generator
