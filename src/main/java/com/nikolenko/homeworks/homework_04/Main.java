@@ -103,13 +103,39 @@ public class Main {
         System.out.println("\n*********************************************************************************");
 
         System.out.println("\nStringUtils");
-        System.out.println(StringUtils.randomString(24,"alpha" ));
-        System.out.println(StringUtils.randomString(32,"numeric" ));
-        System.out.println(StringUtils.randomString(48,"alphanumeric" ));
-        System.out.println(StringUtils.randomString(24,"unknown" ));
-        System.out.println(StringUtils.randomString(-13,"alphanumeric" ));
+        System.out.println(StringUtils.randomString(24, "alpha"));
+        System.out.println(StringUtils.randomString(32, "numeric"));
+        System.out.println(StringUtils.randomString(48, "alphanumeric"));
+        System.out.println(StringUtils.randomString(24, "unknown"));
+        System.out.println(StringUtils.randomString(-13, "alphanumeric"));
         System.out.println("\n*********************************************************************************");
 
+        System.out.println("\nCode Validation");
+        String test;
+        test = inputGenerator.validationCode(0);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(1);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(2);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(3);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(4);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(5);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(6);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+
+
+        System.out.println("\n*********************************************************************************");
         keyBoard.close();
     }
 
@@ -248,6 +274,37 @@ public class Main {
             rezult.append((toRevert.charAt(i)));
         }
         return rezult.toString();
+    }
+
+    /*Lecture4 Task 2. Write a program which reverts given word*/
+    private static boolean l04Task2(String toCheck) {
+        String alphanums = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int[] digits = new int[64];
+        String nums = "1234567890";
+        if (toCheck.length() < 13) {
+            return false;
+        }
+        if (toCheck.length() > 64) {
+            return false;
+        }
+        int numbersCount = 0;
+        char[] inp = toCheck.toCharArray();
+        for (char c : inp) {
+            int tInd = alphanums.indexOf(c);
+            if (tInd < 0) {
+                return false;
+            }
+            if (tInd < 10) {
+                digits[numbersCount] = tInd;
+                numbersCount++;
+            }
+        }
+        if (numbersCount > 12) {
+            return false;
+        }
+        int code = (digits[0] * 10 + digits[1]) * (digits[2] * 10 +  digits[3]) * ( digits[4] * 10 +  digits[5]);
+        int checkCode = digits[6] * 100000 + digits[7] * 10000 + digits[8] * 1000 + digits[9] * 100 + digits[10] * 10 + digits[11];
+        return code == checkCode;
     }
 
 }

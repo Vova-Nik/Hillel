@@ -2,7 +2,7 @@ package com.nikolenko.homeworks.homework_04;
 
 /**
  * Generator of different values and sequences for studding purposes
- *
+ * <p>
  * int giveInt() - returns random positiv int number
  * public int giveInt(int min, int max) - returns random  int number between min and max
  * public int[] giveIntArray() - returns random int array of int length 8
@@ -14,23 +14,23 @@ package com.nikolenko.homeworks.homework_04;
  * public String lorem(int len) - Forms complex string including punctuations, capital letters ets, like real text
  */
 
-public  class InputGenerator {
+public class InputGenerator {
     static boolean hastaInserted = false;
 
     /*returns random positiv int number*/
-    public int giveInt(){
+    public int giveInt() {
         Double numd = (Math.random() * Integer.MAX_VALUE);
         return numd.intValue();
     }
 
     /*returns random  int number between min and max*/
-    public int giveInt(int min, int max){
+    public int giveInt(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public int giveStrong(){
-        int[] inpData = {1,2,145,145,40585,40585,40585};
-        return inpData[giveInt(0,(inpData.length-1))];
+    public int giveStrong() {
+        int[] inpData = {1, 2, 145, 145, 40585, 40585, 40585};
+        return inpData[giveInt(0, (inpData.length - 1))];
     }
 
     /*returns random int array of int length 8*/
@@ -66,7 +66,7 @@ public  class InputGenerator {
     /*returns random string */
     public String giveString() {
         String[] first = {"New", "Old", "Young", "Grey", "First", "Red", "Crazy", "Smart", "Nice", "lazy"};
-        String[] second = {"man", "woman", "fox", "dog", "rabbit", "fellow", "body", "baby", "cat", "cow", "girl", "bunny", "animal", "horse" };
+        String[] second = {"man", "woman", "fox", "dog", "rabbit", "fellow", "body", "baby", "cat", "cow", "girl", "bunny", "animal", "horse"};
         String[] third = {"runs", "goes", "wants", "is going", "is jumping", "aims", "wants"};
         String[] fourth = {"city", "river", "casino", "city main street", "west", "east", "to our town", "to village", "cafe", "sunny beach", "park", "grocery", "music shop", "Sherwood forest", "white house", "bare mountain"};
         int firstLength = first.length;
@@ -77,9 +77,9 @@ public  class InputGenerator {
         int secondPhraseNum = (int) (Math.random() * (secondLength));
         int thirdPhraseNum = (int) (Math.random() * (thirdLength));
         int fourthPhraseNum = (int) (Math.random() * (fourthLength));
-        if(!hastaInserted) {
+        if (!hastaInserted) {
             int rnd = (int) (Math.random() * 50);
-            if ( rnd == 23 || rnd == 45) {
+            if (rnd == 23 || rnd == 45) {
                 hastaInserted = true;
                 return "Hasta la vista, baby";
             }
@@ -123,14 +123,14 @@ public  class InputGenerator {
         resultArr[0] = firstUpperCase(resultArr[0]);
 
         StringBuilder result = new StringBuilder();
-        for(int i=0; i<len; i++) {
+        for (int i = 0; i < len; i++) {
             result.append(resultArr[i]).append(" ");
         }
         return result.toString();
     }
 
-    private  String firstUpperCase(String word){
-        if(word == null || word.isEmpty()) return "";
+    private String firstUpperCase(String word) {
+        if (word == null || word.isEmpty()) return "";
         return word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
@@ -158,4 +158,22 @@ public  class InputGenerator {
                     " in mollis nunc sed id et magnis dis parturient montes nascetur ridiculus mus mauris vitae tellus mauris a diam maecenas sed enim ut sem" +
                     " et netus et malesuada fames ac turpis egestas sed maecenas pharetra convallis posuere morbi leo urna molestie" +
                     " elit eget gravida cum sociis natoque penatibus et magnis dis forlop amendo cilla";
+
+    public String validationCode(int num) {
+        String[] alpha = {
+                "AX6BYU56UX6CV6BNT7NM287430",
+                "AX6BYU56UX6CV6BNT7NM111111",
+                "AX6BYU56UX6CV6BNT7NM34",
+                "12",
+                "aliquam ultrices sagittis",
+                "",
+                "AX6ByU56UX6CV6BNT7NM287430",
+                "AX6BYU56UX6CV6BNT0NM257400"
+        };
+        if(num>alpha.length-1)
+            return"";
+        return alpha[num];
+        //return "AX6BYU56UX6CV6BNT7NM287430";
+    }
+
 }
