@@ -1,18 +1,36 @@
 package com.nikolenko.homeworks.homework_04;
 
 /**
- * Array generator
- * returns random array of given types
- * as exclusion can return complex random string
+ * Generator of different values and sequences for studding purposes
+ *
+ * int giveInt() - returns random positiv int number
+ * public int giveInt(int min, int max) - returns random  int number between min and max
+ * public int[] giveIntArray() - returns random int array of int length 8
+ * public int[] giveIntArray(int size)
+ * public int[] giveIntArray(int size, int min, int max) - returns random int array of int length = size, values restricted to min-max
+ * public String giveString() - returns random string
+ * public String[] giveStringArray(int len) - returns random String array  length = len
+ * public String loremPlain(int len) - Forms simply lorem type string. Lovercased, without punctuation of length = len words
+ * public String lorem(int len) - Forms complex string including punctuations, capital letters ets, like real text
  */
 
-public class InputGenerator {
+public  class InputGenerator {
     static boolean hastaInserted = false;
 
-    /*returns random int number*/
-    public int formInt(){
+    /*returns random positiv int number*/
+    public int giveInt(){
         Double numd = (Math.random() * Integer.MAX_VALUE);
         return numd.intValue();
+    }
+
+    /*returns random  int number between min and max*/
+    public int giveInt(int min, int max){
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    public int giveStrong(){
+        int[] inpData = {1,2,145,145,40585,40585,40585};
+        return inpData[giveInt(0,(inpData.length-1))];
     }
 
     /*returns random int array of int length 8*/
@@ -24,6 +42,7 @@ public class InputGenerator {
         }
         return intArray;
     }
+
     /*returns random int array of int length = size*/
     public int[] giveIntArray(int size) {
         int[] intArray = new int[size];
@@ -33,6 +52,7 @@ public class InputGenerator {
         }
         return intArray;
     }
+
     /*returns random int array of int length = size, values restricted to min-max */
     public int[] giveIntArray(int size, int min, int max) {
         int[] intArray = new int[size];
@@ -42,21 +62,21 @@ public class InputGenerator {
         }
         return intArray;
     }
+
     /*returns random string */
     public String giveString() {
-
-        String[] first = {"New", "Old", "Young", "Grey", "First", "Red", "Crasy", "Smart", "Nice", "lazy"};
-        String[] second = {"man", "woman", "fox", "dog", "rabbit", "fellow", "body", "baby", "cat", "cow", "girl", "bunny"};
+        String[] first = {"New", "Old", "Young", "Grey", "First", "Red", "Crazy", "Smart", "Nice", "lazy"};
+        String[] second = {"man", "woman", "fox", "dog", "rabbit", "fellow", "body", "baby", "cat", "cow", "girl", "bunny", "animal", "horse" };
         String[] third = {"runs", "goes", "wants", "is going", "is jumping", "aims", "wants"};
         String[] fourth = {"city", "river", "casino", "city main street", "west", "east", "to our town", "to village", "cafe", "sunny beach", "park", "grocery", "music shop", "Sherwood forest", "white house", "bare mountain"};
         int firstLength = first.length;
         int secondLength = second.length;
         int thirdLength = third.length;
         int fourthLength = fourth.length;
-        int firstPhraseNum = (int) (Math.random() * (firstLength + 1));
-        int secondPhraseNum = (int) (Math.random() * (secondLength + 1));
-        int thirdPhraseNum = (int) (Math.random() * (thirdLength + 1));
-        int fourthPhraseNum = (int) (Math.random() * (fourthLength + 1));
+        int firstPhraseNum = (int) (Math.random() * (firstLength));
+        int secondPhraseNum = (int) (Math.random() * (secondLength));
+        int thirdPhraseNum = (int) (Math.random() * (thirdLength));
+        int fourthPhraseNum = (int) (Math.random() * (fourthLength));
         if(!hastaInserted) {
             int rnd = (int) (Math.random() * 50);
             if ( rnd == 23 || rnd == 45) {
@@ -66,6 +86,7 @@ public class InputGenerator {
         }
         return first[firstPhraseNum] + " " + second[secondPhraseNum] + " " + third[thirdPhraseNum] + " " + fourth[fourthPhraseNum];
     }
+
     /*returns random String array  length = len*/
     public String[] giveStringArray(int len) {
         String[] result = new String[len];
@@ -76,7 +97,7 @@ public class InputGenerator {
         return result;
     }
 
-    /*Forms simply string. Lovercased, without punctuation*/
+    /*Forms simply lorem type string. Lovercased, without punctuation of length = len words*/
     public String loremPlain(int len) {
         String[] words = base.split("\\s+");
         StringBuilder result = new StringBuilder();
@@ -90,7 +111,6 @@ public class InputGenerator {
 
     /*Forms complex string including punctuations, capital letters ets, like real text*/
     //Not finished yet
-
     public String lorem(int len) {
         String[] words = base.split("\\s+");
         String[] resultArr = new String[len];
@@ -110,7 +130,7 @@ public class InputGenerator {
     }
 
     private  String firstUpperCase(String word){
-        if(word == null || word.isEmpty()) return ""; //или return word;
+        if(word == null || word.isEmpty()) return "";
         return word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 

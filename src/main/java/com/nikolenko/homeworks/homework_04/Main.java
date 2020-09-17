@@ -3,6 +3,7 @@ package com.nikolenko.homeworks.homework_04;
 import com.nikolenko.homeworks.homework_00.KeyBoard;
 
 import static java.lang.System.arraycopy;
+import static java.lang.System.in;
 
 public class Main {
     private static KeyBoard keyBoard = new KeyBoard();
@@ -25,8 +26,6 @@ public class Main {
         /* ************************************************* palindrome *************************************************************/
         System.out.println("Task2");
         System.out.println("\nWrite a program which checks if a string (array of chars) is a palindrome");
-
-
         KeyBoard keyBoard = new KeyBoard();
         //System.out.println("Input any string to check, if it is a palindrome");
         //String poly = keyBoard.giveString();
@@ -37,7 +36,7 @@ public class Main {
         } else {
             System.out.println("Phrase: " + '\"' + poly + '\"' + " is not a palindrome");
         }
-         poly = "Аргентина, манит негра!!!";
+        poly = "Аргентина, манит негра!!!";
         if (l03Task2(poly)) {
             System.out.println("Phrase: " + '\"' + poly + '\"' + " is true palindrome");
         } else {
@@ -58,7 +57,7 @@ public class Main {
         System.out.println("\nWrite a program which calculates the sum of two columns.\n" +
                 "Print table with results if columns have the same size (col_1\n" +
                 "| col_2 | sum). Otherwise print which column has bigger size");
-        InputGenerator inputGenerator = new InputGenerator();
+
         System.out.println(l03Task3(inputGenerator.giveIntArray(10), inputGenerator.giveIntArray(10)));
         //System.out.println(l03Task3(inputGenerator.giveIntArray(10), inputGenerator.giveIntArray(12)));
 
@@ -71,15 +70,49 @@ public class Main {
          */
 
         /* ******************************if given number is STRONG **************************************************/
+        System.out.println("\nif given number is STRONG");
+        int toCheck;
+        toCheck = inputGenerator.giveInt(0, 5053607);  //4053607
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveInt(0, 5053607);
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveInt(0, 4053607);
+        System.out.println(l03Task4(toCheck));
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveStrong();
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveStrong();
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveStrong();
+        System.out.println(l03Task4(toCheck));
+        toCheck = inputGenerator.giveStrong();
+        System.out.println(l03Task4(toCheck));
+        System.out.println("\n*********************************************************************************");
 
-        System.out.println(l03Task4(2376));
-        System.out.println(l03Task4(145));
-        System.out.println(l03Task4(2047));
-        System.out.println(l03Task4(22046));
+        System.out.println("\nRevert word");
+        String s = "Vovchik!";
+        System.out.println(s);
+        System.out.println(l04Task0(s));
+        s = inputGenerator.giveString();
+        System.out.println(s);
+        System.out.println(l04Task0(s));
+        s = inputGenerator.giveString();
+        System.out.println(s);
+        System.out.println(l04Task0(s));
 
+        System.out.println("\n*********************************************************************************");
+
+        System.out.println("\nStringUtils");
+        System.out.println(StringUtils.randomString(24,"alpha" ));
+        System.out.println(StringUtils.randomString(32,"numeric" ));
+        System.out.println(StringUtils.randomString(48,"alphanumeric" ));
+        System.out.println(StringUtils.randomString(24,"unknown" ));
+        System.out.println(StringUtils.randomString(-13,"alphanumeric" ));
+        System.out.println("\n*********************************************************************************");
 
         keyBoard.close();
     }
+
 
     private static String l03Task1() {
         int arrSize = 24;
@@ -151,11 +184,12 @@ public class Main {
         int toCheck = numToCheck;
         StringBuilder result = new StringBuilder();
 
-        if (toCheck >= Math.pow(10, 8)) {
-            result.append("Number is too big. Try another.");
+        if (toCheck > 40353607) //there are no factorions bigger then 7^9
+        {
+            result.append("Number ").append(numToCheck).append(" is too big. Try another.\n\n");
             return result.toString();
         }
-        if (toCheck < 10) {
+        if (toCheck < 0) {
             result.append("Number is too little. It is definitely not a STRONG.");
             return result.toString();
         }
@@ -181,7 +215,7 @@ public class Main {
 //        System.out.println("size " + size);
 
         int calc = 0;
-        int cc ;
+        int cc;
         for (int i = 8 - size; i < 8; i++) {
             cc = factorial(parsed[i]);
             calc += cc;
@@ -190,10 +224,9 @@ public class Main {
 
         result.append("----------\n").append(calc).append("\n");
 
-        if(numToCheck == calc) {
+        if (numToCheck == calc) {
             result.append("Number ").append(numToCheck).append(" is STRONG");
-        }
-        else{
+        } else {
             result.append("Number ").append(numToCheck).append(" is not strong");
         }
         result.append("\n\n");
@@ -208,5 +241,13 @@ public class Main {
         return result;
     }
 
+    /*Lecture4 Task 0. Write a program which reverts given word*/
+    private static String l04Task0(String toRevert) {
+        StringBuilder rezult = new StringBuilder();
+        for (int i = toRevert.length() - 1; i >= 0; i--) {
+            rezult.append((toRevert.charAt(i)));
+        }
+        return rezult.toString();
+    }
 
 }
