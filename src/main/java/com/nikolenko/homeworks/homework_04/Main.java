@@ -2,11 +2,14 @@ package com.nikolenko.homeworks.homework_04;
 
 import com.nikolenko.homeworks.homework_00.KeyBoard;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.lang.System.arraycopy;
 import static java.lang.System.in;
 
 public class Main {
-    private static KeyBoard keyBoard = new KeyBoard();
+
     private static InputGenerator inputGenerator = new InputGenerator();
 
     /**
@@ -142,7 +145,39 @@ public class Main {
 
 
         System.out.println("\n*********************************************************************************");
-        keyBoard.close();
+
+        System.out.println("\nregex to validate a username");
+        Pattern pattern = Pattern.compile("^[a-z0-9_]{4,16}$");
+        String toTest = "vovchik_123";
+        Matcher matcher = pattern.matcher(toTest);
+        boolean matches = matcher.matches();
+        System.out.println(toTest + " " + matches);
+
+        toTest = "Vovchik_123";
+        Matcher matcher1 = pattern.matcher(toTest);
+        matches = matcher1.matches();
+        System.out.println(toTest + " " + matches);
+
+        System.out.println("\n*********************************************************************************");
+
+        System.out.println("\n*********************************************************************************");
+
+        System.out.println("\nreplace any digit below 5 with '0' and any digit 5 and above with '1'.");
+        String str = "heoif123456789kjfgl9876543100";
+
+        Pattern pt5 = Pattern.compile("[0-5]");
+        Matcher m5 = pt5.matcher(str);
+        String halfRezult = m5.replaceAll("0");
+
+        Pattern pt6 = Pattern.compile("[5-9]");
+        Matcher m6 = pt6.matcher(halfRezult);
+        String rezult = m6.replaceAll("1");
+
+        System.out.println("input - " + str + " Result - "  + rezult );
+
+
+        System.out.println("\n*********************************************************************************");
+
     }
 
 
