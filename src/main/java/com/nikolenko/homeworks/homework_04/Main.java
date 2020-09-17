@@ -133,6 +133,12 @@ public class Main {
         test = inputGenerator.validationCode(6);
         System.out.println("\"" + test + "\"");
         System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(7);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
+        test = inputGenerator.validationCode(8);
+        System.out.println("\"" + test + "\"");
+        System.out.println(l04Task2(test) + "\n");
 
 
         System.out.println("\n*********************************************************************************");
@@ -281,7 +287,7 @@ public class Main {
         String alphanums = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int[] digits = new int[64];
         String nums = "1234567890";
-        if (toCheck.length() < 13) {
+        if (toCheck.length() < 8) {
             return false;
         }
         if (toCheck.length() > 64) {
@@ -299,11 +305,35 @@ public class Main {
                 numbersCount++;
             }
         }
-        if (numbersCount > 12) {
-            return false;
+//        if (numbersCount > 12) {
+//            return false;
+//        }
+        int checkCode;
+        switch (numbersCount) {
+            case 12:
+                checkCode = digits[6] * 100000 + digits[7] * 10000 + digits[8] * 1000 + digits[9] * 100 + digits[10] * 10 + digits[11];
+                break;
+            case 11:
+                checkCode = digits[6] * 10000 + digits[7] * 1000 + digits[8] * 100 + digits[9] * 10 + digits[10];
+                break;
+            case 10:
+                checkCode = digits[6] * 1000 + digits[7] * 100 + digits[8] * 10 + digits[9];
+                break;
+            case 9:
+                checkCode = digits[6] * 100 + digits[7] * 10 + digits[8];
+                break;
+            case 8:
+                checkCode = digits[6] * 10 + digits[7];
+                break;
+            case 7:
+                checkCode = digits[6];
+                break;
+            default:
+                checkCode = -1;
+                break;
         }
-        int code = (digits[0] * 10 + digits[1]) * (digits[2] * 10 +  digits[3]) * ( digits[4] * 10 +  digits[5]);
-        int checkCode = digits[6] * 100000 + digits[7] * 10000 + digits[8] * 1000 + digits[9] * 100 + digits[10] * 10 + digits[11];
+        //System.out.println(checkCode);
+        int code = (digits[0] * 10 + digits[1]) * (digits[2] * 10 + digits[3]) * (digits[4] * 10 + digits[5]);
         return code == checkCode;
     }
 

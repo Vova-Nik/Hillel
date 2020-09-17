@@ -168,7 +168,8 @@ public class InputGenerator {
                 "aliquam ultrices sagittis",
                 "",
                 "AX6ByU56UX6CV6BNT7NM287430",
-                "AX6BYU56UX6CV6BNT0NM257400"
+                "A010101A1",
+                "A0B50EE5C0D5A125"
         };
         if(num>alpha.length-1)
             return"";
