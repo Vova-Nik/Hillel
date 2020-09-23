@@ -6,9 +6,8 @@ public class Equations19_26 {
     private double y = 1;
 
     Equations19_26(KeyBoard kbd) {
-        keyBoard = kbd;
         System.out.println("Please, enter any number as X for calculating functions 19 to 26");
-        x = keyBoard.giveDouble();
+        x = kbd.giveDouble();
         try {
             equation19();
             equation20();
