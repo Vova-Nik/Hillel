@@ -1,13 +1,8 @@
 package com.nikolenko.homeworks.homework_06;
 
-import java.util.Objects;
-
 public class FractionNumber {
-    private final int numerator;
-    private final int denominator;
-
-    private int inumerator;
-    private int idenominator;
+    private  int numerator;        //keeps original values
+    private  int denominator;
 
     public FractionNumber() {
         numerator = 0;
@@ -20,21 +15,16 @@ public class FractionNumber {
         normalize();
     }
 
-    private void normalize() {
-        inumerator = numerator;
-        idenominator = denominator;
-        if (idenominator == 0) {
-            idenominator = 1;
-        }
-    }
-
-
-    public FractionNumber plus(FractionNumber fn) {
-        return this;
+     public FractionNumber plus(FractionNumber fn) {
+        int sumdNm = fn.denominator * this.denominator;
+        int sumNm = this.numerator * fn.denominator + fn.numerator * this.denominator;
+        return new FractionNumber(sumNm, sumdNm);
     }
 
     public FractionNumber minus(FractionNumber fn) {
-        return this;
+        int sumdNm = fn.denominator * this.denominator;
+        int sumNm = this.numerator * fn.denominator - fn.numerator * this.denominator;
+        return new FractionNumber(sumNm, sumdNm);
     }
 
     public FractionNumber multiply(FractionNumber fn) {
@@ -44,7 +34,6 @@ public class FractionNumber {
     public FractionNumber divide(FractionNumber fn) {
         return this;
     }
-
 
     public String getValue() {
         if (denominator == 0) {
@@ -68,7 +57,19 @@ public class FractionNumber {
         return numerator + "/" + denominator;
     }
 
-    public String toPrintg() {
-        return numerator + "/" + denominator + "   " + inumerator + "/" + idenominator;
+    private void normalize() {
+        int gCD = gcd(numerator, denominator);
+        numerator = numerator / gCD;
+        denominator = denominator / gCD;
+    }
+
+    private int gcd(int a, int b) {
+        while (a != 0 && b != 0) // until either one of them is 0
+        {
+            int c = b;
+            b = a % b;
+            a = c;
+        }
+        return a + b; // either one is 0, so return the non-zero value
     }
 }
