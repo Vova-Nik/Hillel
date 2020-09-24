@@ -1,32 +1,19 @@
 package com.nikolenko.homeworks.homework_06;
 
-import com.nikolenko.homeworks.homework_05.Order;
-
-import java.util.Date;
-
 public class Homework_06 {
 
     public static void main(String[] args) {
-
-//        FractionNumber fr = new FractionNumber(8,12);
-//        System.out.println(fr.toString());
-
+        FractionNumber fr14 = new FractionNumber(1, 4);
         FractionNumber fr12 = new FractionNumber(1, 2);
-        FractionNumber fr_12 = new FractionNumber(1, 2);
 
-        FractionNumber fr13 = new FractionNumber(1, 3);
-        System.out.println("1/2 equals to 1/3 " +fr12.equals(fr13));
-        System.out.println("1/2 equals to 1/2 " +fr12.equals(fr_12));
-//
-//        System.out.println(fr13.getValue());
-//
-//        FractionNumber fr10 = new FractionNumber(1, 0);
-//        System.out.println("1/0 == :) " + fr10.getValue());
-//
-//        FractionNumber fr24 = new FractionNumber(8, 24);
-//        FractionNumber fr1005 = new FractionNumber(100, 5);
-//        System.out.println(fr12.plus(fr13));
-//        System.out.println(fr12.minus(fr13));
+        System.out.println("1/4 func 1/2:");
+
+        System.out.println("plus = " + fr12.plus(fr14));
+        System.out.println("minus = " + fr12.minus(fr14));
+        System.out.println("multiply = " + fr12.multiply(fr14));
+        System.out.println("divide = " + fr12.divide(fr14));
+
+        System.out.println("equals - " + fr14.equals(fr12));
 
     }
 }
