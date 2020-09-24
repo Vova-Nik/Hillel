@@ -1,8 +1,8 @@
 package com.nikolenko.homeworks.homework_06;
 
 public class FractionNumber {
-    private  int numerator;        //keeps original values
-    private  int denominator;
+    private final int numerator;
+    private final int denominator;
 
     public FractionNumber() {
         numerator = 0;
@@ -10,9 +10,9 @@ public class FractionNumber {
     }
 
     public FractionNumber(int numerator, int denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
-        normalize();
+        Fraction fr = normalize(numerator, denominator);
+        this.numerator = fr.up;
+        this.denominator = fr.dn;
     }
 
      public FractionNumber plus(FractionNumber fn) {
@@ -57,10 +57,11 @@ public class FractionNumber {
         return numerator + "/" + denominator;
     }
 
-    private void normalize() {
-        int gCD = gcd(numerator, denominator);
-        numerator = numerator / gCD;
-        denominator = denominator / gCD;
+    private Fraction normalize(int n, int d) {
+        int gCD = gcd(n, d);
+        n = n / gCD;
+        d = d / gCD;
+        return new Fraction(n,d);
     }
 
     private int gcd(int a, int b) {
@@ -72,4 +73,13 @@ public class FractionNumber {
         }
         return a + b; // either one is 0, so return the non-zero value
     }
+
+    private class Fraction{
+        int up;
+        int dn;
+        Fraction(int up, int dn ){
+            this.up = up;
+            this.dn = dn;
+        }
+   }
 }
