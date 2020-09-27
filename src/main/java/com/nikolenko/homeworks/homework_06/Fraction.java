@@ -7,4 +7,11 @@ public interface Fraction {
     Fraction divide(Fraction other);
     int getNumerator();
     int getDenominator();
+
+    @Override
+    boolean equals(Object o);
+    @Override
+    int hashCode();
+    @Override
+    String toString();
 }

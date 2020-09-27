@@ -2,27 +2,26 @@ package com.nikolenko.homeworks.homework_06;
 
 /**
  * FractionNumber Class
- *
+ * <p>
  * Holds reduced fraction (not 8/4 but 1/2)
  * numerator and denominator integers
  * if passed to constructor denominator = 0, fraction becomes max/min integer value instead of infinity
  * (1/0 = 2147483647/1, -1/0 = -2147483648/1)
- *
+ * <p>
  * Constructors
  * public FractionNumber() (1/2)
  * public FractionNumber(int numerator, int denominator);
- *
+ * <p>
  * Methods
  * public FractionNumber plus(FractionNumber fn);
  * public FractionNumber minus(FractionNumber fn);
  * public FractionNumber multiply(FractionNumber fn);
  * public FractionNumber divide(FractionNumber fn);
  * public double getValue();
- *
+ * <p>
  * Overrides
  * public boolean equals(Object o);
  * public String toString();
- *
  */
 
 
@@ -30,8 +29,11 @@ public class FractionImpl implements Fraction {
     private final int numerator;
     private final int denominator;
 
-    public FractionImpl(int numerator, int denominator) {
-
+    public FractionImpl(int numerator, int denominator)  throws ArithmeticException{
+        denominator = Math.abs(denominator);
+        if(denominator == 0){
+            throw new ArithmeticException("Dividing by zero in FractionImpl constructor");
+        }
         if (numerator == 0) {
             this.numerator = 0;
             this.denominator = 1;
@@ -42,36 +44,33 @@ public class FractionImpl implements Fraction {
         this.denominator = denominator / gcd;
     }
 
-    /*********************** plus *******************************/
     @Override
     public Fraction plus(Fraction other) {
-        int sumdNm = other.getDenominator() * this.getDenominator();
+        int sumdNm = Math.abs(other.getDenominator() * this.getDenominator());
         int sumNm = this.getNumerator() * other.getDenominator() + other.getNumerator() * this.getDenominator();
         return new FractionImpl(sumNm, sumdNm);
     }
 
-    /*********************** minus *******************************/
     @Override
     public Fraction minus(Fraction other) {
-//        int sumdNm = fn.denominator * this.denominator;
-//        int sumNm = this.numerator * fn.denominator - fn.numerator * this.denominator;
-//        return new FractionNumber(sumNm, sumdNm);
-        return null;
+        int sumdNm = other.getDenominator() * this.denominator;
+        int sumNm = this.numerator * other.getDenominator() - other.getNumerator() * this.denominator;
+        return new FractionImpl(sumNm, sumdNm);
     }
 
-    /*********************** multiply *******************************/
     @Override
     public Fraction multiply(Fraction other) {
-//        return new FractionNumber(this.numerator * fn.numerator, this.denominator * fn.denominator);
-        return null;
+        return new FractionImpl(this.numerator * other.getNumerator(), this.denominator * other.getDenominator());
     }
 
-    /*********************** divide *******************************/
     @Override
     public Fraction divide(Fraction other) {
-//        FractionNumber inverted = new FractionNumber(fn.denominator, fn.numerator);
-//        return multiply(inverted);
-        return null;
+        int invNumerator = other.getDenominator();
+        if (other.getNumerator() < 0) {
+            invNumerator = -invNumerator;
+        }
+        FractionImpl inverted = new FractionImpl(invNumerator, other.getNumerator());
+        return multiply(inverted);
     }
 
     public int getNumerator() {
@@ -81,40 +80,38 @@ public class FractionImpl implements Fraction {
     public int getDenominator() {
         return denominator;
     }
-//
-//    public double getValue() {
-//        return (double)numerator / (double)denominator;
-//    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Fraction that = (Fraction) o;
+        if (that.hashCode() != hashCode()) {
+            return false;
+        }
         return numerator == that.getNumerator() &&
                 denominator == that.getDenominator();
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return (numerator << 16) + denominator;
     }
 
     @Override
     public String toString() {
-        return numerator + "/" + denominator;
+       return numerator + "/" + denominator;
     }
 
-/* greatest common divisor  */
     private int greatestCommonDivisor(int a, int b) {
-
         while (a != 0 && b != 0) {
             int c = b;
             b = a % b;
             a = c;
         }
-        return a + b;
+        return Math.abs(a + b);
     }
+
 }
 
 
