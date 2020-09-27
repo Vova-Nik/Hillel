@@ -29,10 +29,11 @@ public class FractionImpl implements Fraction {
     private final int numerator;
     private final int denominator;
 
-    public FractionImpl(int numerator, int denominator)  throws ArithmeticException{
+//    public FractionImpl(int numerator, int denominator)  throws ArithmeticException{
+    public FractionImpl(int numerator, int denominator)  throws IllegalArgumentException{
         denominator = Math.abs(denominator);
         if(denominator == 0){
-            throw new ArithmeticException("Dividing by zero in FractionImpl constructor");
+            throw new IllegalArgumentException("Dividing by zero in FractionImpl constructor");
         }
         if (numerator == 0) {
             this.numerator = 0;

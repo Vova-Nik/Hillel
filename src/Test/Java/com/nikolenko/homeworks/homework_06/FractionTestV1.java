@@ -1,14 +1,12 @@
 package com.nikolenko.homeworks.homework_06;
 
-import com.nikolenko.homeworks.homework_06.Fraction;
-import com.nikolenko.homeworks.homework_06.FractionImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FractionTest {
+class FractionTestV1 {
    static FractionImpl fraction1_2;
    static FractionImpl fraction6_21;
    static FractionImpl fraction1_3;
