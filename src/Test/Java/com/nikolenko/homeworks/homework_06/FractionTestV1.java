@@ -100,7 +100,6 @@ class FractionTestV1 {
     }
 
     @Test
-
     void testEquals() {
         assertTrue(fraction6_21.equals(fraction6_21));
         assertTrue(fraction6_21.equals(new FractionImpl(2, 7)));
