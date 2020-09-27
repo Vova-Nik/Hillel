@@ -1,4 +1,4 @@
-package Java.com.nikolenko.homeworks.homework_06;
+package com.nikolenko.homeworks.homework_06;
 
 import com.nikolenko.homeworks.homework_06.Fraction;
 import com.nikolenko.homeworks.homework_06.FractionImpl;
