@@ -2,10 +2,8 @@ package com.nikolenko.homeworks.homework_07;
 
 import com.nikolenko.homeworks.homework_06.Fraction;
 import com.nikolenko.homeworks.homework_06.FractionImpl;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
