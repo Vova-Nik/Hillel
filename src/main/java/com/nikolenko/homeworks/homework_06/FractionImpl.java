@@ -1,27 +1,10 @@
 package com.nikolenko.homeworks.homework_06;
 
 /**
- * FractionNumber Class
+ * FractionImplClass
  * <p>
  * Holds reduced fraction (not 8/4 but 1/2)
  * numerator and denominator integers
- * if passed to constructor denominator = 0, fraction becomes max/min integer value instead of infinity
- * (1/0 = 2147483647/1, -1/0 = -2147483648/1)
- * <p>
- * Constructors
- * public FractionNumber() (1/2)
- * public FractionNumber(int numerator, int denominator);
- * <p>
- * Methods
- * public FractionNumber plus(FractionNumber fn);
- * public FractionNumber minus(FractionNumber fn);
- * public FractionNumber multiply(FractionNumber fn);
- * public FractionNumber divide(FractionNumber fn);
- * public double getValue();
- * <p>
- * Overrides
- * public boolean equals(Object o);
- * public String toString();
  */
 
 
@@ -29,10 +12,10 @@ public class FractionImpl implements Fraction {
     private final int numerator;
     private final int denominator;
 
-    public FractionImpl(int numerator, int denominator)  throws ArithmeticException{
+    public FractionImpl(int numerator, int denominator)  throws IllegalArgumentException{
         denominator = Math.abs(denominator);
         if(denominator == 0){
-            throw new ArithmeticException("Dividing by zero in FractionImpl constructor");
+            throw new IllegalArgumentException("Dividing by zero in FractionImpl constructor");
         }
         if (numerator == 0) {
             this.numerator = 0;
