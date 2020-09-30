@@ -7,7 +7,7 @@ public class Author {
     private final String lastName;
     private final Date dateOfBirth;
 
-    public Author(Author author){
+     Author(Author author) {
         this.firstName = author.getFirstName();
         this.lastName = author.getLastName();
         this.dateOfBirth = author.getDateOfBirth();
@@ -16,7 +16,7 @@ public class Author {
     public Author(String firstName, String lastName, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(dateOfBirth.getYear(), dateOfBirth.getMonth(), dateOfBirth.getDate());
     }
 
     public String getFirstName() {
@@ -28,36 +28,43 @@ public class Author {
     }
 
     public Date getDateOfBirth() {
-        return new Date(String.valueOf(dateOfBirth));
+        return new Date(dateOfBirth.getYear(), dateOfBirth.getMonth(), dateOfBirth.getDate());
     }
 
     @Override
-    public String toString(){
-        int a =dateOfBirth.getDay();
-        int b =  (dateOfBirth.getMonth()+1);
-        return "Author\nFirst name - " + firstName + "\nLast Name - " + lastName + "\nDate of birth - " + dateOfBirth.getDate() + '.' + (dateOfBirth.getMonth()+1) + '.' +dateOfBirth.getYear();
+    public String toString() {
+        return "Author{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth='" +  dateOfBirth.getDate() + '.' + (dateOfBirth.getMonth() + 1) + '.' + dateOfBirth.getYear() +
+                "'}";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){ return true;}
-        if (o == null || getClass() != o.getClass()){return false;};
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Author author = (Author) o;
-        if(this.hashCode() != author.hashCode()){return false;}
+        if (this.hashCode() != author.hashCode()) {
+            return false;
+        }
         return this.toString().equals(author.toString());
     }
 
     @Override
-    public int hashCode(){
-        String atr = firstName + lastName + dateOfBirth.getDate() + dateOfBirth.getMonth()+ dateOfBirth.getYear();
+    public int hashCode() {
+        String atr = firstName + lastName + dateOfBirth.getDate() + dateOfBirth.getMonth() + dateOfBirth.getYear();
         char[] chArr = atr.toCharArray();
-        int hash=0;
-        for(char ch:chArr) {
-            hash = hash<<1 + (int) ch;
-            hash *=31;
+        int hash = 0;
+        for (char ch : chArr) {
+            hash = (hash<<1)  + ch;
+            hash *= 31;
         }
         return hash;
     }
-
 
 }
