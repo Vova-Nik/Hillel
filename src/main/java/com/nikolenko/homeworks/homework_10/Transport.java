@@ -2,12 +2,13 @@ package com.nikolenko.homeworks.homework_10;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
-@Data   //ToString, EqualsAndHashCode, Getter
+/**(Создать родительский абстрактный класс "Transport" (год выпуска, страна производитель)*/
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class Transport {
-//(Создать родительский абстрактный класс "Transport" (год выпуска, страна производитель)
     int issueYear;
     Country countryCode;
 }

@@ -1,6 +1,7 @@
 package com.nikolenko.homeworks.homework_10;
 
 public enum Country {
+    CN ("China"),
     ES ("Spain"),
     FR ("France"),
     GB ("United Kingdom"),
@@ -10,6 +11,7 @@ public enum Country {
     KR ("Korea"),
     PL ("Polland"),
     RO ("Romania"),
+    RU ("Russia"),
     SE ("Sweden"),
     SK ("Slovakia"),
     US ("USA"),
