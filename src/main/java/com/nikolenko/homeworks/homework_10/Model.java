@@ -1,52 +1,36 @@
 package com.nikolenko.homeworks.homework_10;
 
-import com.nikolenko.homeworks.homework_10.AutoTypes.SecondHandAuto;
-import com.nikolenko.homeworks.homework_10.AutoTypes.SportCar;
-
 public class Model {
     private final int SIZE = 1000;
-    private final Auto[] autos;
+    private final Sellable[] peaces;
     private int index;
     private int quantity;
 
     public Model() {
-        autos = new Auto[1000];
+        peaces = new Sellable[1000];
         index = 0;
         quantity = 0;
     }
 
-    boolean addAuto(Auto auto) {
+    boolean addAuto(Sellable someCar) {
         if (index + 1 >= SIZE) {
             return false;
         }
-        quantity++;
-        autos[index] = new Auto(auto);
-        index++;
-        return true;
-    }
-    boolean add(SecondHandAuto auto) {
-        if (index + 1 >= SIZE) {
-            return false;
+        for (Sellable vehicle: peaces
+             ) {
+            if(someCar.equals(vehicle)){
+                return false;}
         }
         quantity++;
-        autos[index] = new Auto(auto);
-        index++;
-        return true;
-    }
-    boolean add(SportCar auto) {
-        if (index + 1 >= SIZE) {
-            return false;
-        }
-        quantity++;
-        autos[index] = new Auto(auto);
+        peaces[index] = someCar.getCopy();
         index++;
         return true;
     }
 
-    public Auto[] getList() {
-        Auto[] autoList = new Auto[quantity];
+    public Sellable[] getList() {
+        Sellable[] autoList = new Sellable[quantity];
         for (int i = 0; i < autoList.length; i++) {
-            autoList[i] = new Auto(autos[i]);
+            autoList[i] = peaces[i].getCopy();
         }
         return autoList;
     }

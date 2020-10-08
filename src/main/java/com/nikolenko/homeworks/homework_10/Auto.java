@@ -35,4 +35,8 @@ public class Auto extends Transport {
         this.buyer = new Person(buyer);
     }
 
+//    int getTransportYear(){
+//        return this.
+//    }
+
 }

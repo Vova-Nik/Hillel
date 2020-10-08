@@ -2,9 +2,7 @@ package com.nikolenko.homeworks.homework_10;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Calendar;
 
 class AutoTest {

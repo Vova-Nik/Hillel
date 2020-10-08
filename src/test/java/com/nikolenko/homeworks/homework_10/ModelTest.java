@@ -45,7 +45,6 @@ class ModelTest {
 
     }
 
-
     @Test
     void addAuto() {
         assertTrue(model.addAuto(secondHandAuto1));
@@ -54,12 +53,13 @@ class ModelTest {
         assertTrue(model.addAuto(sportCar2));
         assertTrue(model.addAuto(specTech1));
         assertTrue(model.addAuto(specTech2));
+        assertFalse(model.addAuto(secondHandAuto1));
     }
 
     @Test
     void getList() {
-        Auto[] list = model.getList();
-        for (Auto a : list
+        Sellable[] list = model.getList();
+        for (Sellable a : list
         ) {
             System.out.println(a);
         }
