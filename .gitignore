@@ -100,3 +100,4 @@ hs_err_pid*
 .idea
 Hillel.iml
 /target/
+log.txt
