@@ -17,8 +17,8 @@ public class FileLogger extends Logger {
         if (loglevel.getLevel() >= this.logLevel.getLevel()) {
             try {
                 super.log(toLog);
-            } catch (LoggerException lge) {
-                System.out.println(lge.toString());
+            } catch (IOException e) {
+                System.out.println(e.toString());
             }
         }
     }
@@ -26,8 +26,8 @@ public class FileLogger extends Logger {
     public void close() {
         try {
             super.close();
-        } catch (LoggerException lge) {
-            System.out.println(lge.toString());
+        } catch (IOException e) {
+            System.out.println(e.toString());
         }
     }
 }

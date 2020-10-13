@@ -1,12 +1,13 @@
 package com.nikolenko.homeworks.homework_11;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ConsoleLogger extends Logger {
     private final LogLevel logLevel;
     private Logger logger;
 
-    ConsoleLogger(LogLevel logLevel)  {
+    ConsoleLogger(LogLevel logLevel) {
         super(new PrintWriter(System.out));
         this.logLevel = logLevel;
     }
@@ -15,8 +16,8 @@ public class ConsoleLogger extends Logger {
         if (loglevel.getLevel() >= this.logLevel.getLevel()) {
             try {
                 super.log(toLog);
-            } catch (LoggerException lge) {
-                System.out.println(lge.toString());
+            } catch (IOException e) {
+                System.out.println(e.toString());
             }
         }
     }
@@ -24,8 +25,8 @@ public class ConsoleLogger extends Logger {
     public void close() {
         try {
             super.close();
-        } catch (LoggerException lge) {
-            System.out.println(lge.toString());
+        } catch (IOException e) {
+            System.out.println(e.toString());
         }
     }
 }

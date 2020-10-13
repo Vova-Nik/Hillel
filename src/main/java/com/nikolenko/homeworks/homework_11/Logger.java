@@ -15,24 +15,17 @@ public class Logger implements AutoCloseable {
         bufferedWriter = new BufferedWriter(writer);
     }
 
-    void log(String messege) throws LoggerException {
-        try {
-            bufferedWriter.append(dateFormat.format(new Date())).append("INFO: ").append(messege).append("\n");
-        } catch (IOException e) {
-            throw (new LoggerException("Logger: Exception during writing data to log file. " + e.toString()));
-        }
+    void log(String messege) throws IOException {
+        bufferedWriter.append(dateFormat.format(new Date())).append("INFO: ").append(messege).append("\n");
     }
 
     @Override
-    public void close() throws LoggerException {
-        if(writer.getClass().toString().contains("PrintWriter")){  //without this blok tests logging to console would not passed
+    public void close() throws IOException {
+        if (writer.getClass().toString().contains("PrintWriter")) {  //without this blok tests logging to console would not passed        bufferedWriter.close();
+            bufferedWriter.close();
             return;
         }
-        try {
-            bufferedWriter.flush();
-            bufferedWriter.close();
-        } catch (IOException e) {
-            throw (new LoggerException("Logger: Exception during closing log file. " + e.toString()));
-        }
+        bufferedWriter.flush();
+        bufferedWriter.close();
     }
 }
