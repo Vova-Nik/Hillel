@@ -102,4 +102,5 @@ Hillel.iml
 /target/
 log.txt
 src/test/java/com/nikolenko/homeworks/*
+!src/test/java/com/nikolenko/homeworks/homework_12
 .tmp.drivedownload/*
