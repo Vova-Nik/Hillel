@@ -1,10 +1,10 @@
 package com.nikolenko.homeworks.homework_15;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.io.File;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +18,18 @@ class DataProviderTest {
 
     @Test
     void addFile() {
-        dataProvider.addFile("src\\test\\java\\com\\nikolenko\\homeworks\\homework_15\\list.csv");
+        char fs = File.separatorChar;
+
+        String inputFilePath = "src" + fs +
+                "test" + fs +
+                "java" + fs +
+                "com" + fs +
+                "nikolenko" + fs +
+                "homeworks" + fs +
+                "homework_15" + fs +
+                "list.csv";
+
+        dataProvider.addFile(inputFilePath);
         System.out.println(dataProvider);
         assertEquals(14,dataProvider.getSize());
         dataProvider.addString("John,Bush,24,186,69,finnn@live.com");
@@ -27,19 +38,14 @@ class DataProviderTest {
 
     @Test
     void provide() {
-        dataProvider.addFile("src\\test\\java\\com\\nikolenko\\homeworks\\homework_15\\list.csv");
+        dataProvider.addFile("src/test/java/com/nikolenko/homeworks/homework_15/list.csv");
         System.out.println(dataProvider);
         assertEquals(14,dataProvider.getSize());
-        Set<Person> setOfPerson1 =  dataProvider.provide();
-        assertEquals(14,setOfPerson1.size());
+        List<Person> listOfPerson1 =  dataProvider.provide();
+        assertEquals(14,listOfPerson1.size());
         dataProvider.addString("Eugene,Berezhnyi,32,170,81,berezhnoy87@gmail.com");
-        Set<Person> setOfPerson2 =  dataProvider.provide();
+        List<Person> setOfPerson2 =  dataProvider.provide();
         assertEquals(15,dataProvider.getSize());
-        assertEquals(14,setOfPerson2.size());
     }
 
-    @Test
-    void testToString() {
-
-    }
 }

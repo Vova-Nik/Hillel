@@ -12,10 +12,11 @@ class PersonTest {
 
     @BeforeEach
     void setUp() {
-            person1 = new Person("Mike","Tyson",54,178,81,"iron.mike@gmail.com");
-            person2 = new Person("Mike","Tyson",54,178,81,"iron.mike@gmail.com");
-            person3 = new Person("Nik","Tyson",34,178,81,"iron.mike@gmail.com");
+         person1 = Person.builder().name("Mike").surname("Tyson").age(54).height(178).weight(81).mail("iron.mike@gmail.com").build();
+         person2 = Person.builder().name("Mike").surname("Tyson").age(54).height(178).weight(81).mail("iron.mike@gmail.com").build();
+         person3 = Person.builder().name("Nik").surname("Tyson").age(34).height(178).weight(81).mail("iron.mike@gmail.com").build();
     }
+
 
     @Test
     void testToString() {

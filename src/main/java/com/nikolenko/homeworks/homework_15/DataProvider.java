@@ -1,59 +1,53 @@
 package com.nikolenko.homeworks.homework_15;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class DataProvider {
 
-    private final List<String> list;
+    private List<String> fileLines;
     DataProvider() {
-        list = new ArrayList<>();
+        fileLines = new ArrayList<>();
     }
 
-    void addFile(String path) {
-        String record;
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            while (true) {
-                record = br.readLine();
-                if (record == null) {
-                    break;
-                }
-                list.add(record);
-            }
+    void addFile(String fileName) {
+        Path path = FileSystems.getDefault().getPath(fileName);
+        try {
+            fileLines = Files.readAllLines(path);
+
         } catch (IOException e) {
             System.out.println("DataProvider error. " + e);
         }
     }
 
     void addString(String person) {
-        list.add(person);
+        fileLines.add(person);
     }
 
-    public Set<Person> provide() {
-        Set<Person> set = new HashSet<>();
-        for (String rawPerson : list) {
+    public List<Person> provide() {
+        List<Person> personList = new ArrayList<>();
+        for (String rawPerson : fileLines) {
             try {
-                set.add(DataMapper.mapString(rawPerson));
+                personList.add(DataMapper.mapString(rawPerson));
             } catch (PersonFailException e) {
                 System.out.println(e.toString());
             }
         }
-        return set;
+        return personList;
     }
 
     public int getSize(){
-        return list.size();
+        return fileLines.size();
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (String person : list) {
+        for (String person : fileLines) {
             result.append(person).append('\n');
         }
         result.append("\n");

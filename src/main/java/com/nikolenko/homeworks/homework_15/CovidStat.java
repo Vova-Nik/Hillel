@@ -3,31 +3,100 @@ package com.nikolenko.homeworks.homework_15;
 import java.util.*;
 
 public class CovidStat {
-    private final Set<Person> persons;
+    private final List<Person> persons;
 
-    CovidStat(Set<Person> personsSet) {
-        persons = personsSet;
+    CovidStat(List<Person> personsList) {
+        persons = personsList;
     }
 
     public String getMostPopularName() {
-        PersonComparatorName personComparatorName = new PersonComparatorName(persons);
-        TreeSet<Person> people = new TreeSet<>(personComparatorName);
-        people.addAll(persons);
-        return people.first().getName();
+        List<String> namesList = new ArrayList<>();
+        for (Person person : persons) {
+            namesList.add(person.getName());
+        }
+        Collections.sort(namesList);
+        Map<String, Integer> namesMap = new HashMap<>();
+        String name;
+        int maxCountOfNames = 0;
+        for (Person person : persons) {
+            name = person.getName();
+            if (namesMap.containsKey(name)) {
+                namesMap.put(name, (namesMap.get(name) + 1));
+                if (namesMap.get(name) > maxCountOfNames) {
+                    maxCountOfNames = namesMap.get(name);
+                }
+            } else {
+                namesMap.put(name, 1);
+            }
+        }
+        String mostPopular = "";
+        for (String nam : namesList) {
+            if (namesMap.get(nam) == maxCountOfNames) {
+                mostPopular = nam;
+                break;
+            }
+        }
+        return mostPopular;
     }
 
     public String getMostPopularSurname() {
-        PersonComparatorSurename personComparatorSurename = new PersonComparatorSurename(persons);
-        TreeSet<Person> people = new TreeSet<>(personComparatorSurename);
-        people.addAll(persons);
-        return people.first().getSurname();
+        List<String> surnamesList = new ArrayList<>();
+        for (Person person : persons) {
+            surnamesList.add(person.getSurname());
+        }
+        Collections.sort(surnamesList);
+        Map<String, Integer> namesMap = new HashMap<>();
+        String surname;
+        int maxCountOfSurnames = 0;
+        for (Person person : persons) {
+            surname = person.getSurname();
+            if (namesMap.containsKey(surname)) {
+                namesMap.put(surname, (namesMap.get(surname) + 1));
+                if (namesMap.get(surname) > maxCountOfSurnames) {
+                    maxCountOfSurnames = namesMap.get(surname);
+                }
+            } else {
+                namesMap.put(surname, 1);
+            }
+        }
+        String mostPopular = "";
+        for (String sname : surnamesList) {
+            if (namesMap.get(sname) == maxCountOfSurnames) {
+                mostPopular = sname;
+                break;
+            }
+        }
+        return mostPopular;
     }
 
     public String getMostPopularDomain() {
-        PersonComparatorDomain personComparatorDomain = new PersonComparatorDomain(persons);
-        TreeSet<Person> people = new TreeSet<>(personComparatorDomain);
-        people.addAll(persons);
-        return people.first().getDomain();
+        List<String> domainsList = new ArrayList<>();
+        for (Person person : persons) {
+            domainsList.add(person.getDomain());
+        }
+        Collections.sort(domainsList);
+        Map<String, Integer> namesMap = new HashMap<>();
+        String domain;
+        int maxCountOfDomains = 0;
+        for (Person person : persons) {
+            domain = person.getDomain();
+            if (namesMap.containsKey(domain)) {
+                namesMap.put(domain, (namesMap.get(domain) + 1));
+                if (namesMap.get(domain) > maxCountOfDomains) {
+                    maxCountOfDomains = namesMap.get(domain);
+                }
+            } else {
+                namesMap.put(domain, 1);
+            }
+        }
+        String mostPopular = "";
+        for (String dmn : domainsList) {
+            if (namesMap.get(dmn) == maxCountOfDomains) {
+                mostPopular = dmn;
+                break;
+            }
+        }
+        return mostPopular;
     }
 
     public int getAverageAge() {
@@ -58,83 +127,5 @@ public class CovidStat {
         average = average / persons.size();
         average = Math.round(average * 1.0) / 1.0;
         return average.intValue();
-    }
-}
-
-class PersonComparatorName implements Comparator<Person> {
-    Map<String, Integer> names = new HashMap<>();
-    PersonComparatorName(Set<Person> persons) {
-        for (Person person : persons) {
-            String name = person.getName();
-            if (names.containsKey(name)) {
-                names.put(name, (names.get(name) + 1));
-            } else {
-                names.put(name, 1);
-            }
-        }
-    }
-
-    public int compare(Person a, Person b) {
-        String aName = a.getName();
-        String bName = b.getName();
-        if (names.get(aName).equals(names.get(bName))) {
-            return aName.compareTo(bName);
-        }
-        if (names.get(aName) < names.get(bName)) {
-            return 1;
-        }
-        return -1;
-    }
-}
-
-class PersonComparatorSurename implements Comparator<Person> {
-    Map<String, Integer> surnames = new HashMap<>();
-    PersonComparatorSurename(Set<Person> persons) {
-        for (Person person : persons) {
-            String surname = person.getSurname();
-            if (surnames.containsKey(surname)) {
-                surnames.put(surname, (surnames.get(surname) + 1));
-            } else {
-                surnames.put(surname, 1);
-            }
-        }
-    }
-
-    public int compare(Person a, Person b) {
-        String aSurname = a.getSurname();
-        String bSurname = b.getSurname();
-        if (surnames.get(aSurname).equals(surnames.get(bSurname))) {
-            return aSurname.compareTo(bSurname);
-        }
-        if (surnames.get(aSurname) < surnames.get(bSurname)) {
-            return 1;
-        }
-        return -1;
-    }
-}
-
-class PersonComparatorDomain implements Comparator<Person> {
-    Map<String, Integer> domains = new HashMap<>();
-    PersonComparatorDomain(Set<Person> persons) {
-        for (Person person : persons) {
-            String domain = person.getDomain();
-            if (domains.containsKey(domain)) {
-                domains.put(domain, (domains.get(domain) + 1));
-            } else {
-                domains.put(domain, 1);
-            }
-        }
-    }
-
-    public int compare(Person a, Person b) {
-        String aDomain = a.getDomain();
-        String bDomain = b.getDomain();
-        if (domains.get(aDomain).equals(domains.get(bDomain))) {
-            return aDomain.compareTo(bDomain);
-        }
-        if (domains.get(aDomain) < domains.get(bDomain)) {
-            return 1;
-        }
-        return -1;
     }
 }
