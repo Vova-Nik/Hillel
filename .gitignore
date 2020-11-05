@@ -104,3 +104,5 @@ log.txt
 
 src/test/java/com/nikolenko/homeworks/homework_11
 .tmp.drivedownload/*
+covid.dat
+covid.csv
