@@ -39,7 +39,7 @@ class CatTest {
         System.out.println(cat);
         cat.unEat();
         Mouse first = cat.getStomach().peek();
-        assertTrue(first.equals(mouses[1]));
+        assertEquals(first, mouses[1]);
         System.out.println(cat);
         for (int i = 0; i < 10; i++) {
             cat.unEat();
@@ -63,5 +63,28 @@ class CatTest {
         mouseList = cat.drain();
         System.out.println(mouseList);
         assertFalse(mouseList.contains(new Mouse("Jerry", 460)));
+    }
+
+    @Test
+    void drainStream() {
+        long counter;
+        for (int i = 0; i < 5; i++) {
+            cat.eat(mouses[i]);
+        }
+        List<Mouse> mouseList = cat.drain();
+         counter = mouseList.stream()
+                .filter(mouse -> mouse.equals(new Mouse("Jerry", 460)))
+                .count();
+        assertEquals(1, counter);
+        for (int i = 0; i < 5; i++) {
+            cat.eat(mouses[i]);
+        }
+        cat.unEat();
+        cat.unEat();
+        mouseList = cat.drain();
+         counter = mouseList.stream()
+                .filter(mouse -> mouse.equals(new Mouse("Jerry", 460)))
+                .count();
+        assertEquals(0, counter);
     }
 }
