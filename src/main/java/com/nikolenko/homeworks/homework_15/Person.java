@@ -14,7 +14,7 @@ public class Person {
     private final String mail;
 
 
-    Person(String name, String surname, int age, int height, int weight, String mail)
+    public Person(String name, String surname, int age, int height, int weight, String mail)
     {
         this.name = name;
         this.surname = surname;
@@ -31,6 +31,16 @@ public class Person {
     @Override
     public String toString() {
         return "Person: {" + "name:" + name + "\t" + "surname:" + surname + "\t" + "age:" + age + "\t" + "weight:" + weight + "\t" + "height:" + height + "\t" + "mail:" + mail + "\t" + "domain:" + getDomain() + "}" + "\n";
+    }
+
+    public static String printSomeNumber(double d1, double d2){
+        System.out.println("Person printSomeNumber(double, double)  " + d1 + " " + d2);
+        return "Value from printSomeNumber";
+    }
+
+    public static String printSomeNumber(double d1){
+        System.out.println("Person printSomeNumber(double) " + d1 );
+        return "Value from printSomeNumber";
     }
 }
 
