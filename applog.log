@@ -1,0 +1,97 @@
+15:10:33.0047 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES em
+
+1, David, Dave, 5000
+2, Shmavid, Lessley, 16000
+3, Dolly, Sheep, 100
+4, Molly, Cow, 3000
+5, David, Markovich, 10500
+6, Lucki, Dog, 2500
+7, Debora, Lama, 3500
+8, Christy, Shmisty, 5457
+9, Tom, Cat, 64000
+10, George, Bush, 28000
+11, Bill, Grass, 2800
+12, Tom, Sawier, 4000
+13, Gekky, Finn, 2000
+14, Tom, Hanks, 12000
+15, Peter, Smiter, 2500
+16, Jonny, Shmoni, 3500
+17, Colly, Shmolly, 6000
+18, Jesica, Shmesika, 1000
+19, Cuba, Good, 1790
+20, Avreliy, Shmeliy, 1790
+
+15:10:33.0073 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID%2=1
+
+1, David, Dave, 5000
+3, Dolly, Sheep, 100
+5, David, Markovich, 10500
+7, Debora, Lama, 3500
+9, Tom, Cat, 64000
+11, Bill, Grass, 2800
+13, Gekky, Finn, 2000
+15, Peter, Smiter, 2500
+17, Colly, Shmolly, 6000
+19, Cuba, Good, 1790
+
+15:10:33.0082 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES WHERE FIRST_NAME='David'
+
+1, David, Dave, 5000
+5, David, Markovich, 10500
+
+15:10:33.0091 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES, DEPARTMENTS WHERE EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.DEPARTMENT_ID AND DEPARTMENTS.DEPARTMENT_NAME=54 AND EMPLOYEES.SALARY > 5000
+
+2, Shmavid, Lessley, 16000
+14, Tom, Hanks, 12000
+
+15:10:33.0102 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES where FIRST_NAME like '%d'
+
+1, David, Dave, 5000
+2, Shmavid, Lessley, 16000
+5, David, Markovich, 10500
+
+15:10:33.0113 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES where SALARY >= 2000 and SALARY <= 4000
+
+4, Molly, Cow, 3000
+6, Lucki, Dog, 2500
+7, Debora, Lama, 3500
+11, Bill, Grass, 2800
+12, Tom, Sawier, 4000
+13, Gekky, Finn, 2000
+15, Peter, Smiter, 2500
+16, Jonny, Shmoni, 3500
+
+15:10:33.0123 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY FROM EMPLOYEES em, DEPARTMENTS dp, LOCATIONS lc, COUNTRIES cn, REGIONS rg WHERE em.DEPARTMENT_ID=dp.DEPARTMENT_ID and dp.LOCATION_ID = lc.LOCATION_ID and lc.COUNTRY_ID = cn.COUNTRY_ID and cn.REGION_ID = rg.REGION_ID and rg.REGION_NAME = 'EUROPE'
+
+1, David, Dave, 5000
+2, Shmavid, Lessley, 16000
+3, Dolly, Sheep, 100
+11, Bill, Grass, 2800
+14, Tom, Hanks, 12000
+15, Peter, Smiter, 2500
+16, Jonny, Shmoni, 3500
+4, Molly, Cow, 3000
+
+15:10:33.0133 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY FROM Employees em, (SELECT COUNT(EMPLOYEE_ID), MANAGER_ID FROM Employees GROUP BY MANAGER_ID HAVING COUNT(EMPLOYEE_ID) > 6) mn WHERE mn.MANAGER_ID = em.EMPLOYEE_ID
+
+1, David, Dave, 5000
+3, Dolly, Sheep, 100
+
+15:10:33.0141 [main] INFO  c.n.h.homework_24.DBDataGetterTest - 
+SELECT * FROM EMPLOYEES empls, (SELECT EMPLOYEE_ID, SALARY FROM EMPLOYEES em, (SELECT MANAGER_ID as mngr FROM Employees GROUP BY MANAGER_ID) mngrs WHERE EMPLOYEE_ID = mngr AND SALARY >10000) richmngr WHERE empls.MANAGER_ID = richmngr.EMPLOYEE_ID
+
+3, Dolly, Sheep, 100
+5, David, Markovich, 10500
+12, Tom, Sawier, 4000
+13, Gekky, Finn, 2000
+14, Tom, Hanks, 12000
+
+15:10:33.0148 [main] INFO  c.n.h.homework_24.DBDataGetterTest - Connection to hillel DB succesfull!
