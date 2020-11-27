@@ -3,6 +3,11 @@ package com.nikolenko.homeworks.homework_15;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CovidStatTest {
@@ -90,5 +95,21 @@ class CovidStatTest {
     void getAverageWeight() {
         System.out.println("Average weight is " + covidStat.getAverageWeight());
         assertEquals(77, covidStat.getAverageWeight());
+    }
+
+    @Test
+    void streamTest() {
+        List<Person> personsList = dataProvider.provide();
+        AtomicInteger counter = new AtomicInteger(0);
+        List<Person> filteredPerson = personsList.stream()
+                .filter(i -> !(i.getDomain().contains("gmail.com")))
+                .filter(i -> i.getAge() < 30)
+                .peek(i -> counter.addAndGet(1))
+                .collect(Collectors.toList());
+        for (Person person : filteredPerson
+        ) {
+            System.out.print(person);
+        }
+        System.out.println("\nThere are " + counter + "people of age less then 30 and domain not gmail");
     }
 }

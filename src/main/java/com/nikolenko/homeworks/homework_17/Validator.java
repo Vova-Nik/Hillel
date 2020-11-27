@@ -1,6 +1,10 @@
 package com.nikolenko.homeworks.homework_17;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Validator {
     public static boolean validateBrackets(String toCheck) {
@@ -35,5 +39,43 @@ public class Validator {
             }
         }
         return bracketsStack.size() == 0;
+    }
+
+    public static boolean validate(String toCheck) {
+        AtomicBoolean result = new AtomicBoolean(true);
+        Deque<Integer> bracketsStack = new LinkedList<>();
+
+        HashSet<Integer> openingBrackets = new HashSet<>();
+        openingBrackets.add((int) '[');
+        openingBrackets.add((int) '{');
+
+        HashSet<Integer> clozingBrackets = new HashSet<>();
+        clozingBrackets.add((int) '}');
+        clozingBrackets.add((int) ']');
+
+        Map<Integer, Integer> bracketPairs = new HashMap<>();
+        bracketPairs.put((int) ']', (int) '[');
+        bracketPairs.put((int) '}', (int) '{');
+
+        int[] ch = toCheck.chars()
+                .filter(c -> openingBrackets.contains(c) || clozingBrackets.contains(c))
+                .peek(c -> {
+                            if (openingBrackets.contains(c)) {
+                                bracketsStack.push(c);
+                                return;
+                            }
+                            if (clozingBrackets.contains(c)) {
+                                if (bracketsStack.size() == 0) {
+                                    result.set(false);
+                                    return;
+                                }
+                                if (!bracketsStack.pop().equals( bracketPairs.get(c))) {
+                                    result.set(false);
+                                }
+                            }
+                        }
+                )
+                .toArray();
+        return result.get();
     }
 }
