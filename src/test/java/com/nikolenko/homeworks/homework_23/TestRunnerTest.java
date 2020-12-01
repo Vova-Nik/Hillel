@@ -1,11 +1,17 @@
 package com.nikolenko.homeworks.homework_23;
 
+<<<<<<< HEAD
 import lombok.extern.slf4j.Slf4j;
+=======
+>>>>>>> hw24
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+<<<<<<< HEAD
 @Slf4j
+=======
+>>>>>>> hw24
 class TestRunnerTest {
 
     @Test
